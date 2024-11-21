@@ -5,8 +5,8 @@
 #include <string>
 
 std::string generateRandomCart() {
-    char letter = 'a' + rand() % 3; // 'a', 'b' или 'c'
-    int number = 1 + rand() % 9; // Число от 1 до 9
+    char letter = 'a' + rand() % 3;
+    int number = 1 + rand() % 9;
     return std::string(1, letter) + std::to_string(number);
 }
 
@@ -17,18 +17,18 @@ int main() {
         return 1;
     }
 
-    outputFile << "cart,id\n"; // Записываем заголовки
+    outputFile << "cart,id\n";
 
-    srand(static_cast<unsigned int>(time(0))); // Инициализация генератора случайных чисел
+    srand(static_cast<unsigned int>(time(0)));
 
-    int numEntries = 100000; // Количество записей (вы можете изменить это значение)
+    int numEntries = 100000;
     for (int i = 0; i < numEntries; ++i) {
         std::string cartValue = generateRandomCart();
-        int idValue = 1 + rand() % 30000; // ID от 1 до 13
-        outputFile << cartValue << "," << idValue << "\n"; // Записываем данные
+        int idValue = 1 + rand() % 30000;
+        outputFile << cartValue << "," << idValue << "\n";
     }
 
-    outputFile.close(); // Закрываем файл
+    outputFile.close();
     std::cout << "Файл sells.csv успешно создан!" << std::endl;
 
     return 0;
